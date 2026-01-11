@@ -2,12 +2,11 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import "dotenv/config";
 import express from "express";
-import http from "http";
 
 import router from "../routes/router.js";
 
 export const app = express();
-export const server = http.createServer(app);
+// export const server = http.createServer(app);
 
 // base middleware
 app.use(cors());

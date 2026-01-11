@@ -3,7 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import http from "http";
-import config from "../config/config.js";
+import { config } from "process";
 
 export const app = express();
 export const server = http.createServer(app);
@@ -17,3 +17,4 @@ app.use(express.urlencoded({ limit: "2gb", extended: true }));
 server.listen(config.PORT, () =>
   console.log("listening on port " + config.PORT)
 );
+

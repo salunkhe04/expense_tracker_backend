@@ -4,7 +4,6 @@ import "dotenv/config";
 import express from "express";
 import http from "http";
 
-import config from "../config/config.js";
 import router from "../routes/router.js";
 
 export const app = express();
@@ -16,8 +15,8 @@ app.use(cookieParser());
 app.use(express.json({ limit: "2gb" }));
 app.use(express.urlencoded({ limit: "2gb", extended: true }));
 
-server.listen(config.PORT, () =>
-  console.log("listening on port " + config.PORT)
-);
+// server.listen(config.PORT, () =>
+//   console.log("listening on port " + config.PORT)
+// );
 
 app.use("/api", router);

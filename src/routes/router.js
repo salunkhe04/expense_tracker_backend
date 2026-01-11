@@ -4,7 +4,7 @@ const router = Router();
 
 router.get("/get-data", async (req, res) => {
   try {
-    return res.json(200).send("okay");
+    return res.json(200).send((successRes, "okay"));
   } catch (error) {
     return res.json(500).send("server  error");
   }

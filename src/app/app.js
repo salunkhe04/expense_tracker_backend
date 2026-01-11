@@ -3,7 +3,9 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 import http from "http";
-import { config } from "process";
+
+import config from "../config/config.js";
+import router from "../routes/router.js";
 
 export const app = express();
 export const server = http.createServer(app);
@@ -18,3 +20,4 @@ server.listen(config.PORT, () =>
   console.log("listening on port " + config.PORT)
 );
 
+app.use("/api", router);

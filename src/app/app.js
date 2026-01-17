@@ -18,5 +18,5 @@ app.use(express.urlencoded({ limit: "2gb", extended: true }));
 //   console.log("listening on port " + config.PORT)
 // );
 
-app.use("/api", router);
+app.use(router);
 //

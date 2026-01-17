@@ -2,7 +2,6 @@ import cors from "cors";
 import "dotenv/config";
 import express from "express";
 
-import router from "../routes/router.js";
 
 export const app = express();
 // export const server = http.createServer(app);
@@ -18,9 +17,5 @@ app.use(express.urlencoded({ limit: "2gb", extended: true }));
 // });
 
 
-// server.listen(config.PORT, () =>
-//   console.log("listening on port " + config.PORT)
-// );
-
-app.use(router);
+// app.use(router);
 //

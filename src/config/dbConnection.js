@@ -3,13 +3,26 @@ import config from "./config.js";
 
 const dbUrl = config.DB_URL;
 
-const connectDatabase = async () => {
-  try {
-      if (mongoose.connections[0].readyState) return;
-    await mongoose.connect(dbUrl);
-    console.log("Connected to MongoDB");
-  } catch (error) {
-    console.log("Could not connect to database " + error);
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+async function connectDatabase() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(dbUrl, {
+        bufferCommands: false,
+        serverSelectionTimeoutMS: 30000,
+      })
+      .then((mongoose) => mongoose);
   }
-};
+
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+
 export default connectDatabase;

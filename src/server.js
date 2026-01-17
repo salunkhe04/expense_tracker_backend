@@ -5,6 +5,9 @@ import router from "./routes/router.js";
 
 connectDatabase();
 app.use("/", router);
+
+app.use("/get-data", router);
+
 // app.use(notFound);
 app.use(errorHandler);
 // app.listen(config.PORT, () => {

@@ -2,8 +2,12 @@ import { Router } from "express";
 
 const router = Router();
 router.get("/", (req, res) => {
-  res.send({ data: "hello" });
+  try {
+    res.send({ data: "hello" });
+  } catch (e) {
+    console.log(e);
+    res.send({ data: e });
+  }
 });
-
 
 export default router;

@@ -14,6 +14,11 @@ app.use(cookieParser());
 app.use(express.json({ limit: "2gb" }));
 app.use(express.urlencoded({ limit: "2gb", extended: true }));
 
+app.get("/health", (req, res) => {
+  res.send("OK");
+});
+
+
 // server.listen(config.PORT, () =>
 //   console.log("listening on port " + config.PORT)
 // );

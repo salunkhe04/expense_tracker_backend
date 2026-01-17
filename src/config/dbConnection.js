@@ -12,6 +12,7 @@ if (!cached) {
 async function connectDatabase() {
   if (cached.conn) return cached.conn;
 
+  console.log("Connected to MongoDB");
   if (!cached.promise) {
     cached.promise = mongoose
       .connect(dbUrl, {
